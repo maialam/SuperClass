@@ -18,9 +18,8 @@ public class Class {
 	private Long id;
 	private String firstName;
 	private String secondName;
-	private List<Class> classRoom;
-	
     @OneToMany( cascade = CascadeType.ALL, fetch = Fetch.Type.EAGER)
+	@JoinColumn(name = "trainee_id")
     private List<Trainee> trainee;
 		
     public Class() {
