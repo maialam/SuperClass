@@ -15,7 +15,7 @@ public class Class {
 	private String secondName;
 	private String classRoom;
 	
-	public Account(String firstName, String secondName, String classRoom) {
+	public Class(String firstName, String secondName, String classRoom) {
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.classRoom = classRoom;
