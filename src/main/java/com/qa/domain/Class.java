@@ -2,10 +2,13 @@ package com.qa.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,7 +21,7 @@ public class Class {
 	private Long id;
 	private String firstName;
 	private String secondName;
-    @OneToMany( cascade = CascadeType.ALL, fetch = Fetch.Type.EAGER)
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "trainee_id")
     private List<Trainee> trainee;
 		
@@ -29,7 +32,7 @@ public class Class {
 	public Class(String firstName, String secondName, List<Class> classRoom) {
 		this.firstName = firstName;
 		this.secondName = secondName;
-		this.classRoom = classRoom;
+
 	}
 	
 	public Long getId() {
@@ -56,13 +59,7 @@ public class Class {
 		this.secondName = secondName;
 	}
 
-	public List<Class> getClassRoom() {
-		return classRoom;
-	}
 
-	public void setClassRoom(List<Class> trainees) {
-		this.classRoom = trainees;
-	}
 
 
 
