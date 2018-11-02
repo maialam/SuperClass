@@ -1,11 +1,15 @@
 package com.qa.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
+@Table (name = "Classroom")
 public class Class {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,9 +17,16 @@ public class Class {
 	private Long id;
 	private String firstName;
 	private String secondName;
-	private String classRoom;
+	private List<Class> classRoom;
 	
-	public Class(String firstName, String secondName, String classRoom) {
+    @OneToMany( cascade = CascadeType.ALL, fetch = Fetch.Type.EAGER)
+    private List<Trainee> trainee;
+		
+    public Class() {
+
+	}
+    
+	public Class(String firstName, String secondName, List<Class> classRoom) {
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.classRoom = classRoom;
@@ -45,17 +56,15 @@ public class Class {
 		this.secondName = secondName;
 	}
 
-	public String getClassRoom() {
+	public List<Class> getClassRoom() {
 		return classRoom;
 	}
 
-	public void setClassRoom(String classRoom) {
-		this.classRoom = classRoom;
+	public void setClassRoom(List<Class> trainees) {
+		this.classRoom = trainees;
 	}
 
-	public Class() {
 
-	}
 
 
 	
